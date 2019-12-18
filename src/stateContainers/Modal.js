@@ -4,11 +4,15 @@ import classes from './Modal.module.css';
 const Modal = props => {
   // TODO: setup submitHandler to update task list
   // within Context/store
-  const submitHandler = (event, task) => {
-    event.preventDefault();
-    console.log(event, task);
-  };
-  const [newTask, setNewTask] = useState('');
+
+  // commented out, moving state management to AppContext
+  // const submitHandler = (event, task) => {
+  //   event.preventDefault();
+  //   console.log(event, task);
+  // };
+  // const [newTask, setNewTask] = useState('');
+
+  // state management via AppContext
 
   return (
     <div className={classes.Modal}>
