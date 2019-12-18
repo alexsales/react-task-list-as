@@ -5,7 +5,7 @@ const TaskList = props => {
   // build a list of <li>..</li> elements,
   // pass task items through props object (data from App.js)
   // const taskList = ...
-  const taskListTmp = [[<li>'abc'</li>], [<li>'cde'</li>], []];
+  const taskListTmp = [[<li key='0'>'abc'</li>], [<li key='1'>'cde'</li>], []];
 
   return (
     <>
