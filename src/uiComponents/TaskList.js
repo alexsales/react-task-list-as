@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { AppContext } from '../context/AppContext';
 
 const TaskList = props => {
-  // use array of tasks and .map through each,
-  // build a list of <li>..</li> elements,
-  // pass task items through props object (data from App.js)
-  // const taskList = ...
-  const taskListTmp = [[<li key='0'>'abc'</li>], [<li key='1'>'cde'</li>], []];
+  // move test tasks to AppContext
+  // const taskListTmp = [[<li key='0'>'abc'</li>], [<li key='1'>'cde'</li>], []];
+
+  // access taskList hard-coded test data from AppContext
+  // taskList[0] = highest priority,
+  // taskList[1] = medium priority,
+  // taskList[2] = lowest priority,
+  const appContext = useContext(AppContext);
 
   return (
     <>
-      <ul>{taskListTmp[0]}</ul>
-      <ul>{taskListTmp[1]}</ul>
-      <ul>{taskListTmp[2]}</ul>
+      <ul>{appContext.taskList[0]}</ul>
+      <ul>{appContext.taskList[1]}</ul>
+      <ul>{appContext.taskList[2]}</ul>
+      <button onClick={appContext.toggleModal}>Add New Task</button>
     </>
   );
 };

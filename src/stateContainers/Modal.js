@@ -10,7 +10,7 @@ const Modal = props => {
   //   event.preventDefault();
   //   console.log(event, task);
   // };
-  // const [newTask, setNewTask] = useState('');
+  const [newTask, setNewTask] = useState('');
 
   // state management via AppContext
 
@@ -25,7 +25,7 @@ const Modal = props => {
           onChange={e => setNewTask(e.target.value)}
           placeholder='Email'
         />
-        <button type='submit' onClick={e => submitHandler(e, newTask)}>
+        <button type='submit' onClick={props.submit}>
           Submit
         </button>
       </form>
