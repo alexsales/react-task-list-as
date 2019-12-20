@@ -4,16 +4,18 @@ import TaskList from '../uiComponents/TaskList';
 import { AppContext } from '../context/AppContext';
 
 const Layout = props => {
-  // use AppContext, pass isOpen to Modal component
-  // an tasks to TaskList
+  // using AppContext, pass the function to the Modal
+  // component that will add a newTask to the AppContext/State
   const appContext = useContext(AppContext);
-  console.log(appContext);
   let modalContent = appContext.isModalOpen ? (
-    <Modal submit={task => appContext.addTask(task)} />
+    <Modal
+      submit={newTask => {
+        appContext.addTask(newTask);
+      }}
+    />
   ) : (
     ''
   );
-  console.log(modalContent);
 
   return (
     <>

@@ -10,6 +10,7 @@ const TaskList = props => {
   // taskList[1] = medium priority,
   // taskList[2] = lowest priority,
   const appContext = useContext(AppContext);
+  console.log(appContext);
 
   return (
     <>

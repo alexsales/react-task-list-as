@@ -1,31 +1,44 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
 // sets defaults, but will also initialize below
 export const AppContext = createContext({
-  taskList: [],
+  taskList: [[], [], []],
   isModalOpen: false,
   addTask: () => {},
   toggleModal: () => {}
 });
 
 const AppContextProvider = props => {
-  // React Hook useState to mimic State object
-  // for functional components
-  // const [tasks, setTasks] = useState([]);
-  const [tasks, setTasks] = useState([
-    [<li key='0'>'abc'</li>],
-    [<li key='1'>'cde'</li>],
-    []
-  ]);
-
+  // React Hook useState to mimic State in functional components
+  const [tasks, setTasks] = useState([[], [], []]);
   const [isOpen, setIsOpen] = useState(false);
 
-  const addNewTask = task => {
-    const updatedTaskList = [...tasks, task];
+  const appContext = useContext(AppContext);
+
+  const addNewTask = newTask => {
+    // console.log(newTask);
+
+    setTasks(prevState => {
+      let updatedTaskList = [...prevState];
+      switch (newTask.priority) {
+        case 'low':
+          updatedTaskList[0] = [...updatedTaskList[0], newTask.newTask];
+          break;
+        case 'medium':
+        case 'default':
+          updatedTaskList[1] = [...updatedTaskList[1], newTask.newTask];
+          break;
+        case 'high':
+          updatedTaskList[2] = [...updatedTaskList[2], newTask.newTask];
+          break;
+      }
+      return updatedTaskList;
+    });
   };
 
   const toggleOpenModal = () => setIsOpen(!isOpen);
 
+  // TODO:
   // const deleteTask = task => { .. }
 
   return (
