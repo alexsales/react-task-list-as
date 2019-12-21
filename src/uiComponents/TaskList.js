@@ -9,7 +9,6 @@ const TaskList = props => {
 
   // access taskList hard-coded test data from AppContext
   const appContext = useContext(AppContext);
-  console.log(appContext);
 
   // get sort order from AppContext and use below switch to .concat() arrays
   // in the order specified
@@ -21,25 +20,23 @@ const TaskList = props => {
   const highPriorityTasks = appContext.taskList[0].map((item, i) => (
     <li key={'high' + i}>
       {item}
-      <EditDelete liKey={'high' + i} title={item} />
+      <EditDelete name={item} indx={i} priority='high' />
     </li>
   ));
   const mediumPriorityTasks = appContext.taskList[1].map((item, i) => (
     <li key={'medium' + i}>
       {item}
-      <EditDelete liKey={'medium' + i} title={item} />
+      <EditDelete name={item} indx={i} priority='medium' />
     </li>
   ));
   const lowPriorityTasks = appContext.taskList[2].map((item, i) => (
     <li key={'low' + i}>
       {item}
-      <EditDelete liKey={'low' + i} title={item} />
+      <EditDelete name={item} indx={i} priority='low' />
     </li>
   ));
 
-  let sortedListItems = highPriorityTasks
-    .concat(mediumPriorityTasks)
-    .concat(lowPriorityTasks);
+  let sortedListItems = [];
   switch (sortOrder) {
     case 'mediumHighLow':
       sortedListItems = mediumPriorityTasks
@@ -56,6 +53,10 @@ const TaskList = props => {
         .concat(mediumPriorityTasks)
         .concat(highPriorityTasks);
       break;
+    default:
+      sortedListItems = highPriorityTasks
+        .concat(mediumPriorityTasks)
+        .concat(lowPriorityTasks);
   }
 
   return (

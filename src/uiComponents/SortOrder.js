@@ -1,9 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const SortOrder = props => {
   const appContext = useContext(AppContext);
-  // const [priority, setNewPriority] = useState('high');
 
   return (
     <label>
@@ -11,7 +10,6 @@ const SortOrder = props => {
       <select
         value={appContext.displayPriority}
         onChange={e => {
-          console.log('select sort', e.target.value);
           appContext.changeSortOrder(e.target.value);
         }}>
         <option value='low'>Lowest First</option>

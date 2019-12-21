@@ -8,7 +8,6 @@ const Modal = props => {
   // commented out, moving state management to AppContext
   // const submitHandler = (event, task) => {
   //   event.preventDefault();
-  //   console.log(event, task);
   // };
   const [newTask, setNewTask] = useState('');
   const [priority, setNewPriority] = useState('default');
@@ -16,21 +15,67 @@ const Modal = props => {
   // state management via AppContext
   const appContext = useContext(AppContext);
 
+  let btnContent = (
+    <button
+      type='submit'
+      onClick={e => {
+        e.preventDefault();
+        props.submit({ newTask, priority });
+        appContext.toggleModal();
+      }}>
+      Submit
+    </button>
+  );
+
+  if (props.priority) {
+    btnContent = (
+      <>
+        <button
+          onClick={e => {
+            e.preventDefault();
+            priority !== 'default'
+              ? appContext.editTask(
+                  newTask,
+                  props.indx,
+                  priority,
+                  props.priority
+                )
+              : appContext.editTask(
+                  newTask,
+                  props.indx,
+                  props.priority,
+                  props.priority
+                );
+          }}>
+          Save
+        </button>
+        <button
+          onClick={e => {
+            e.preventDefault();
+            props.cancel(false);
+          }}>
+          Cancel
+        </button>
+      </>
+    );
+  }
+
+  // TODO: add input field validation,
+  // possibly create custom <Input /> component for all inputs
   return (
     <div className={classes.Modal}>
-      <form>
+      <>
         <input
           type='text'
           id='task'
           name='task'
           value={newTask}
           onChange={e => setNewTask(e.target.value)}
-          placeholder='Email'
+          placeholder='Task Name'
         />
         <select
           value={priority}
           onChange={e => {
-            console.log('select value', e.target.value);
             setNewPriority(e.target.value);
           }}>
           <option value='default'>Select Priority</option>
@@ -38,16 +83,8 @@ const Modal = props => {
           <option value='medium'>Medium</option>
           <option value='high'>High</option>
         </select>
-        <button
-          type='submit'
-          onClick={e => {
-            e.preventDefault();
-            props.submit({ newTask, priority });
-            appContext.toggleModal();
-          }}>
-          Submit
-        </button>
-      </form>
+        {btnContent}
+      </>
       <div>(default priority: medium)</div>
     </div>
   );
