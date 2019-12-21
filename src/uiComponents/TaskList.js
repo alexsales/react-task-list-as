@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import SortOrder from '../uiComponents/SortOrder';
+import EditDelete from '../uiComponents/EditDelete';
 
 const TaskList = props => {
   // move test tasks to AppContext
@@ -14,17 +15,26 @@ const TaskList = props => {
   // in the order specified
   const sortOrder = appContext.displayPriority;
 
-  // TODO: separate creation of <li> list items into
+  // TODO: outsource creation of <li> list items into
   // a separate component
   // e.g. <TaskListItems list={appContext.taskList[0]} priority={0}/>
   const highPriorityTasks = appContext.taskList[0].map((item, i) => (
-    <li key={'0' + i}>{item}</li>
+    <li key={'high' + i}>
+      {item}
+      <EditDelete liKey={'high' + i} title={item} />
+    </li>
   ));
   const mediumPriorityTasks = appContext.taskList[1].map((item, i) => (
-    <li key={'1' + i}>{item}</li>
+    <li key={'medium' + i}>
+      {item}
+      <EditDelete liKey={'medium' + i} title={item} />
+    </li>
   ));
   const lowPriorityTasks = appContext.taskList[2].map((item, i) => (
-    <li key={'2' + i}>{item}</li>
+    <li key={'low' + i}>
+      {item}
+      <EditDelete liKey={'low' + i} title={item} />
+    </li>
   ));
 
   let sortedListItems = highPriorityTasks
