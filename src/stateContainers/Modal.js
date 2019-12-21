@@ -48,6 +48,7 @@ const Modal = props => {
           Submit
         </button>
       </form>
+      <div>(default priority: medium)</div>
     </div>
   );
 };
