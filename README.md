@@ -1,3 +1,8 @@
+## A React-based task list.
+## Add, edit, delete, and sort tasks based on priority.
+## Created with React, React Hooks, and Session Storage.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
