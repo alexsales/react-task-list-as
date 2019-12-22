@@ -46,6 +46,7 @@ const Modal = props => {
                   props.priority,
                   props.priority
                 );
+            props.cancel(false);
           }}>
           Save
         </button>
