@@ -57,7 +57,7 @@ const AppContextProvider = props => {
       let updatedTaskList = [...prevState];
       switch (priority) {
         case 'high':
-          updatedTaskList[0] = [...prevState[0]];
+          updatedTaskList[0] = [...updatedTaskList[0]];
           updatedTaskList[0] = updatedTaskList[0]
             .slice(0, index)
             .concat(
@@ -65,7 +65,7 @@ const AppContextProvider = props => {
             );
           break;
         case 'medium':
-          updatedTaskList[1] = [...prevState[1]];
+          updatedTaskList[1] = [...updatedTaskList[1]];
           updatedTaskList[1] = updatedTaskList[1]
             .slice(0, index)
             .concat(
@@ -73,7 +73,7 @@ const AppContextProvider = props => {
             );
           break;
         case 'low':
-          updatedTaskList[2] = [...prevState[2]];
+          updatedTaskList[2] = [...updatedTaskList[2]];
           updatedTaskList[2] = updatedTaskList[2]
             .slice(0, index)
             .concat(

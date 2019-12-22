@@ -64,28 +64,30 @@ const Modal = props => {
   // possibly create custom <Input /> component for all inputs
   return (
     <div className={classes.Modal}>
-      <>
-        <input
-          type='text'
-          id='task'
-          name='task'
-          value={newTask}
-          onChange={e => setNewTask(e.target.value)}
-          placeholder='Task Name'
-        />
-        <select
-          value={priority}
-          onChange={e => {
-            setNewPriority(e.target.value);
-          }}>
-          <option value='default'>Select Priority</option>
-          <option value='low'>Low</option>
-          <option value='medium'>Medium</option>
-          <option value='high'>High</option>
-        </select>
-        {btnContent}
-      </>
-      <div>(default priority: medium)</div>
+      <div className={classes.modalContainer}>
+        <div>
+          <input
+            type='text'
+            id='task'
+            name='task'
+            value={newTask}
+            onChange={e => setNewTask(e.target.value)}
+            placeholder='Task Name'
+          />
+          <select
+            value={priority}
+            onChange={e => {
+              setNewPriority(e.target.value);
+            }}>
+            <option value='default'>Select Priority</option>
+            <option value='low'>Low</option>
+            <option value='medium'>Medium</option>
+            <option value='high'>High</option>
+          </select>
+          {btnContent}
+        </div>
+        <div>(default priority: medium)</div>
+      </div>
     </div>
   );
 };

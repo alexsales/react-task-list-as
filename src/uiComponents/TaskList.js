@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 import SortOrder from '../uiComponents/SortOrder';
-import EditDelete from '../uiComponents/EditDelete';
+import EditDelete from '../stateContainers/EditDelete';
+import classes from './TaskList.module.css';
 
 const TaskList = props => {
   // move test tasks to AppContext
@@ -60,11 +61,11 @@ const TaskList = props => {
   }
 
   return (
-    <>
+    <div className={classes.TaskList}>
       <SortOrder />
       <ul>{sortedListItems}</ul>
       <button onClick={appContext.toggleModal}>Add New Task</button>
-    </>
+    </div>
   );
 };
 

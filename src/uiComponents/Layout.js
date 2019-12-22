@@ -18,10 +18,10 @@ const Layout = props => {
   );
 
   return (
-    <>
+    <div>
       {modalContent}
       <TaskList />
-    </>
+    </div>
   );
 };
 

@@ -1,3 +1,35 @@
 .Modal {
-  background-color: rgba(223, 209, 88, 0.5);
+  background-color: rgba(219, 219, 219, 0.95);
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+}
+
+.Modal .modalContainer {
+  position: relative;
+  top: 35%;
+}
+
+.Modal > div {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.Modal > div input {
+  padding: 0.65em;
+  position: relative;
+  top: -1.5px;
+}
+
+.Modal > div button {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  color: #069;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: inherit;
 }

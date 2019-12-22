@@ -1,11 +1,10 @@
 import React from 'react';
 import Layout from './uiComponents/Layout';
-// import logo from './logo.svg';
-import './App.css';
+import classes from './App.module.css';
 
 function App() {
   return (
-    <div className='App'>
+    <div className={classes.App}>
       <Layout />
     </div>
   );
