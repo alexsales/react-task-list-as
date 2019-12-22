@@ -13,8 +13,15 @@ export const AppContext = createContext({
 });
 
 const AppContextProvider = props => {
+  const tempTasks = sessionStorage.getItem('taskList');
+
+  let initTasks = [[], [], []];
+  if (tempTasks) {
+    initTasks = JSON.parse(tempTasks);
+  }
+
   // React Hook useState to mimic State in functional components
-  const [tasks, setTasks] = useState([[], [], []]);
+  const [tasks, setTasks] = useState(initTasks);
   const [isOpen, setIsOpen] = useState(false);
   const [sortedBy, setSortedBy] = useState('high');
 
@@ -38,6 +45,7 @@ const AppContextProvider = props => {
         default:
           return updatedTaskList;
       }
+      sessionStorage.setItem('taskList', JSON.stringify(updatedTaskList));
       return updatedTaskList;
     });
   };
@@ -83,6 +91,7 @@ const AppContextProvider = props => {
         default:
           return updatedTaskList;
       }
+      sessionStorage.setItem('taskList', JSON.stringify(updatedTaskList));
       return updatedTaskList;
     });
   };
